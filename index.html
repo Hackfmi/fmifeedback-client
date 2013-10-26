@@ -13,7 +13,7 @@
 
     <title>FMIFeedback</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- CSS -->
     <link href="bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -37,8 +37,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Give feedback</a></li>
-            <li><a href="#about">See feedbacks</a></li>
-            <li><a href="#contact">About</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#feedback">See feedbacks</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -47,34 +47,46 @@
     <div class="container">
 
       <div class="starter-template">
-       <!--  <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
-        <form id="feedbackForm">
-          <div id="courseInputContainer" class="first_question">
-             <input id="courseInputField" oninput="onKeypress()" type="text" class="input-sm" id="coursebox" name="coursebox" onblur="getTeachersForCourse()" placeholder="Въведи предмет на кирилица" />
-          </div>
-        
-          <div class="second_question">
-              <select id="teacher" class="input-sm" name="teacherbox" id="teacherbox">
-                <option value="-1">Първо въведи предмет</option>
-              </select>
-          </div>
-          <div class = 'div_possitive_feedback'>
-            <label class='feedback'>Твоето позитивно мнение:</label>
-            <br>
-            <textarea id="positiveFeedback" class ='input-lg' rows="2" cols="20" name="positive"></textarea>
-          </div>
+        <div id="give">
+          <form>
+            <div id="courseInputContainer" class="first_question">
+               <input id="courseInputField" oninput="onKeypress()" type="text" class="input-sm" id="coursebox" name="coursebox" placeholder="Въведи предмет на кирилица"/>
+               <input type="hidden" id="courseId" name="courseId" value="-1"/>
+            </div>
+          
+            <div class="second_question">
+                <select id="teacher" class="input-sm" name="teacherbox" id="teacherbox">
+                  <option value="-1">Първо въведи предмет</option>
+                </select>
+            </div>
+            <div class = 'div_possitive_feedback'>
+              <label class='feedback'>Твоето позитивно мнение:</label>
+              <br>
+              <textarea id="positiveFeedback" class ='input-lg' rows="2" cols="20" name="positive"></textarea>
+            </div>
 
-          <div class="div_negative_feedback">
-            <label class="feedback">Твоето негативно мнение:</label>
-            <br>
-            <textarea id="negativeFeedback" class="input-lg" rows="2" cols="20" name="negative"></textarea>
-          </div>
+            <div class="div_negative_feedback">
+              <label class="feedback">Твоето негативно мнение:</label>
+              <br>
+              <textarea id="negativeFeedback" class="input-lg" rows="2" cols="20" name="negative"></textarea>
+            </div>
+          </form>
           <div id="recaptcha">
-            Recaptcha here
           </div>
-        </form>
-        <button id="submitButton" class="btn-success" type="submit" form="feedbackForm" onclick="postFeedback()">Submit feedback</buton>
+          <button id="submitButton" class="btn-success" type="submit" onclick="postFeedback()">Submit feedback</buton>
+        </div>
+        <div id="about">
+        asdadasdasd
+        </div>
+        <div id="feedback">
+          d
+          d
+          d
+          dd
+          d
+
+          d
+        </div>
       </div><!-- starter_template -->
     </div><!-- /.container -->
 
