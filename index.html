@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FMIFeedback">
+    <meta name="author" content="team koala">
+
+    <meta property="og:title" content="Система за обратна връзка на студентите към ФМИ" />
+    <meta property="og:image" content="" />
+
+    <link rel="shortcut icon" href="public/images/ico/favicon.png">
+
+    <title>FMIFeedback</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img class="img-responsive" 
+            src="public/images/cropped-hackfmi.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Give feedback</a></li>
+            <li><a href="#about">See feedbacks</a></li>
+            <li><a href="#contact">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+       <!--  <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
+        <div id="courseInputContainer" class="first_question">
+           <input type="text" class="input-sm" id="coursebox" name="coursebox" value="" placeholder="Въведи предмет на кирилица" />
+           <!-- <input type="hidden" id="courseId" name="courseId" value="{$courseId}" /> -->
+        </div>
+      
+        <div class="second_question">
+            <select class="input-sm" name="teacherbox" id="teacherbox">
+              <option value="-1">Първо въведи предмет</option>
+            </select>
+        </div>
+        <div class = 'div_possitive_feedback' >
+          <label class='feedback'>Твоето позитивно мнение:</label>
+          <br>
+          <textarea class ='input-lg' rows="2" cols="20" name="positive"></textarea>
+        </div>
+
+        <div class="div_negative_feedback" >
+          <label class="feedback">Твоето негативно мнение:</label>
+          <br>
+          <textarea class="input-lg" rows="2" cols="20" name="negative"></textarea>
+        </div>
+        <div id="recaptcha">
+          TUK IMA REPACHTA
+        </div>
+        <input class="btn-success" type="submit" value="Submit feedback" />
+      </div><!-- starter_template -->
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
