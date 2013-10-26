@@ -15,7 +15,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="custom.css" rel="stylesheet">
 
@@ -51,8 +51,7 @@
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
         <form id="feedbackForm">
           <div id="courseInputContainer" class="first_question">
-             <input id="courseInputField" type="text" class="input-sm" id="coursebox" name="coursebox" onblur="getTeachersForCourse()" placeholder="Въведи предмет на кирилица" />
-             <!-- <input type="hidden" id="courseId" name="courseId" value="{$courseId}" /> -->
+             <input id="courseInputField" oninput="onKeypress()" type="text" class="input-sm" id="coursebox" name="coursebox" onblur="getTeachersForCourse()" placeholder="Въведи предмет на кирилица" />
           </div>
         
           <div class="second_question">
@@ -84,6 +83,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>

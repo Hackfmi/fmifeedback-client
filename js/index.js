@@ -4,16 +4,39 @@ $(document).ready(function() {
 	});
 });
 var APIendpoint = "http://146.185.165.209/server/";
+var currentCourse;
+var onKeypress = function(e) {
+	var tmp_str = $("#courseInputField").val();
+	if (tmp_str.length > 3) {
+		$.ajax({
+		type : "GET",
+		url : APIendpoint + "startWith/" + tmp_str,
+	 	dataType: 'json',
+		success : function(data) {
+			debugger;
+			var options = []
+			for(var i=0; i < data.length; i++) {
+				options.push(data[i].name);
+			}
+			$("#courseInputField").autocomplete({
+				source: options
+			});
+		},
 
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus + ' ' + errorThrown);
+		}
+		});
+	}
+}
 var getTeachersForCourse = function(e) {
 	//GET Teachers
-	var courseID = 202;
+	var courseID = $();
 	$.ajax({
 		type : "GET",
 		url : APIendpoint + "teacherByCourse/" + courseID,
 	 	dataType: 'json',
 		success : function(data) {
-			debugger;
 			var option = '';
 			for (i=0;i<data.length;i++){
 			   option += '<option value="'+ data[i].name + '">' + data[i].name + '</option>';
