@@ -61,7 +61,7 @@ var getFeedbackHTMLElement = function (data) {
 };
 var onKeypress = function(e) {
 	var tmp_str = $("#courseInputField").val();
-  if (tmp_str.length > 2) {
+  if (tmp_str.length > 1) {
 		$.ajax({
   		type : "GET",
   		url : APIendpoint + "startsWith/" + tmp_str,
@@ -103,7 +103,7 @@ var getTeachersForCourse = function(label) {
 		success : function(data) {
 			var option = '';
 			for (i=0;i<data.length;i++){
-			   option += '<option value="'+ data[i].name + '">' + data[i].name + '</option>';
+			   option += '<option data-id="' + data[i].uid + '" value="'+ data[i].name + '">' + data[i].name + '</option>';
 			}
 			$('#teacher').append(option);
 			$('#teacher').val(data[0].name);
@@ -121,7 +121,6 @@ var getFeedback = function(e) {
     url : APIendpoint + "feedbacks/" + 1,
     dataType: 'json',
     success : function(data) {
-      debugger;
       var option = '';
       for (i=0;i<data.length;i++){
          option += '<option value="'+ data[i].name + '">' + data[i].name + '</option>';
@@ -142,7 +141,7 @@ var postFeedback = function(e){
 		type : "POST",
 		url : APIendpoint +"feedback/?key=hackfmi",
 		data : {
-			"teacher_id":     $("#teacher").val(),
+			"teacher_id":     $('#teacher option:selected').attr('data-id');,
       "course_id":      $("#courseId").val(),
 			"positive":       $("#positiveFeedback").val(),
 			"negative":       $("#negativeFeedback").val(),
@@ -154,16 +153,10 @@ var postFeedback = function(e){
     statusCode: {
       404: function() {
         alert( "page not found" );
-      },
-      default: function() {
-        console.log("default");
       }
     },
 		success : function(data) {
-      debugger;
       console.log(data);
-			// $("#gamifiedEducation").hide("fast");
-			// $("#thankYouMessage").show("fast");
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			console.log(textStatus + ' ' + errorThrown);
