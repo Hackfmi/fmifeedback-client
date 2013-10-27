@@ -17,6 +17,7 @@
 
     <!-- CSS -->
     <link href="bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="bower_components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
     <link href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="custom.css" rel="stylesheet">
@@ -49,9 +50,10 @@
     <div class="container">
 
       <div class="starter-template">
+
         <div id="give" class="row show-grid">
           <a href="#feedback">
-            <div id="feedbackCount" class="pull-right">
+            <div id="feedbackCount" class="pull-right label label-info">
               <span>0</span> feedbacks till now
             </div>
           </a>
@@ -80,7 +82,7 @@
             <div id="recaptcha">
             </div>
           </form>
-          <button id="submitButton" class="btn-success" type="submit" onclick="postFeedback()">Submit feedback</buton>
+          <button id="submitButton" class="btn btn-primary btn-large" type="submit" onclick="postFeedback()">Submit feedback</buton>
         </div>
         <div id="about" class="row">
           <div class="span4">
@@ -98,6 +100,7 @@
           <div id="feedbackCount">
               <h1><span>0</span> feedbacks till now</h1>
           </div>
+          <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
         </div>
       </div><!-- starter_template -->
     </div><!-- /.container -->

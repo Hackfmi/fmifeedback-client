@@ -1,10 +1,32 @@
+var page = 1;
+$(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+      $("#feedback").append($('div#loadmoreajaxloader'));
+      $('div#loadmoreajaxloader').show();
+      $.ajax({
+      url: APIendpoint + "feedbacks/" + page,
+      success: function(data) {
+        page += 1;
+        if(data.result) {
+          for (var i = data.result.length - 1; i >= 0; i--) {
+            var html = getFeedbackHTMLElement(data.result[i]);
+            $("#feedback").append(html);
+          };
+          $('div#loadmoreajaxloader').detach();
+          $('div#loadmoreajaxloader').hide();
+        } else {
+            $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
+          }
+        }
+      });
+    }
+});
 $(document).ready(function() {
   $.ajax({
     type: "GET",
     url : APIendpoint + "feedback/?key=hackfmi",
     dataType: "json",
     success : function(data) {
-      debugger
       Recaptcha.create(data.recaptcha_public_key,
         "recaptcha",
         {
@@ -12,11 +34,6 @@ $(document).ready(function() {
           callback: Recaptcha.focus_response_field
         }
       );
-      // $.getScript(recaptchaURL.scriptURL + data.recaptcha_public_key, function(){
-      //   debugger;
-      // });
-      // // $("#recaptcha script").attr("src", recaptchaURL.scriptURL + data.recaptcha_public_key);
-      // // $("#recaptcha iframe").attr("src", recaptchaURL.iframeURL + data.recaptcha_public_key);
       $("#feedbackCount span").html(data.count_all);
     },
     error : function(jqXHR, textStatus, errorThrown) {
@@ -24,18 +41,25 @@ $(document).ready(function() {
     }
   });
 });
-var recaptchaURL = {
-  "scriptURL": "http://www.google.com/recaptcha/api/challenge?k=",
-  "iframeURL": "http://www.google.com/recaptcha/api/noscript?k="
-}
-var feedbackContainer = {
-  "teacher_name":   "",
-  "course_name":    "",
-  "positive":       "",
-  "negative":       "",
-  "date":           "",
-  "course_rating":  0,
-  "teacher_rating": 0
+// var recaptchaURL = {
+//   "scriptURL": "http://www.google.com/recaptcha/api/challenge?k=",
+//   "iframeURL": "http://www.google.com/recaptcha/api/noscript?k="
+// }
+var getFeedbackHTMLElement = function (data) {
+  debugger;
+  var html = '<div class="feedbackElement well well-large">' 
+  +  '<div class="date label label-default pull-right">' + data.created + '</div>' 
+  +  '<h2 class="course-name">' + data.course_name + '</h2>' 
+  +  '<h2 class="teacher-name">' + data.teacher_name + '</h2>';
+  if (data.positive_text) {
+    html += '<div class="positive-feedback alert-success pull-left">' + data.positive_text + '</div>';
+  } 
+  if (data.negative_text) {
+    html += '<div class="negative-feedback alert-danger pull-right">' + data.negative_text + '</div>';
+  }
+  html += '<div class="date label label-default">' + data.course_rating + '</div>' 
+  +  '<div class="date label label-default">' + data.teacher_rating + '</div></div>';
+  return html;
 };
 var APIendpoint = "http://146.185.165.209/server/";
 var onKeypress = function(e) {
