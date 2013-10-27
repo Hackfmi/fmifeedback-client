@@ -137,10 +137,7 @@ var getFeedback = function(e) {
 };
 
 var postFeedback = function(e){
-	var value = $("#courseInputField").val();
-	value = $("#teacher").val()
-	value = $("#positiveFeedback").val()
-	value = $("#negativeFeedback").val()
+  debugger;
 	$.ajax({
 		type : "POST",
 		url : APIendpoint +"feedback/?key=hackfmi",
@@ -150,7 +147,9 @@ var postFeedback = function(e){
 			"positive":       $("#positiveFeedback").val(),
 			"negative":       $("#negativeFeedback").val(),
       "course_rating":  0,
-      "teacher_rating": 0
+      "teacher_rating": 0,
+      "recaptcha_response_field": Recaptcha.get_response(),
+      "recaptcha_challenge_field": Recaptcha.get_challenge()
 		},
     statusCode: {
       404: function() {
