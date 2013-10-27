@@ -25,7 +25,7 @@ $(document).ready(function() {
     dataType: "json",
     success : function(data) {
       pageCourse += 1;
-      for (var i = data.result.length - 1; i >= 0; i--) {
+      for (var i = 0; i < data.result.length; i++) {
         var html = getFeedbackHTMLElement(data.result[i]);
         $("#feedback").append(html);
       }

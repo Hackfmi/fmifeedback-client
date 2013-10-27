@@ -10,7 +10,7 @@ $(window).scroll(function() {
       success: function(data) {
         page += 1;
         if(data.result) {
-          for (var i = data.result.length - 1; i >= 0; i--) {
+          for (var i = 0; i < data.result.length; i++) {
             var html = getFeedbackHTMLElement(data.result[i]);
             $("#feedback").append(html);
           };
@@ -152,6 +152,9 @@ var postFeedback = function(e){
     statusCode: {
       404: function() {
         alert( "page not found" );
+      },
+      200: function() {
+        alert("We got that! Thank you, your feedback will be much appreciated ^_^ twitter, facebook, g+ sharing buttons go here :)")
       }
     },
 		success : function(data) {
