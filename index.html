@@ -13,6 +13,8 @@
 
     <title>FMIFeedback</title>
 
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
     <!-- CSS -->
     <link href="bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
@@ -47,45 +49,55 @@
     <div class="container">
 
       <div class="starter-template">
-        <div id="give">
+        <div id="give" class="row show-grid">
+          <a href="#feedback">
+            <div id="feedbackCount" class="pull-right">
+              <span>0</span> feedbacks till now
+            </div>
+          </a>
           <form>
-            <div id="courseInputContainer" class="first_question">
+            <div id="courseInputContainer" class="span3">
                <input id="courseInputField" oninput="onKeypress()" type="text" class="input-sm" id="coursebox" name="coursebox" placeholder="Въведи предмет на кирилица"/>
                <input type="hidden" id="courseId" name="courseId" value="-1"/>
             </div>
           
-            <div class="second_question">
+            <div class="span3">
                 <select id="teacher" class="input-sm" name="teacherbox" id="teacherbox">
                   <option value="-1">Първо въведи предмет</option>
                 </select>
             </div>
-            <div class = 'div_possitive_feedback'>
+            <div class = 'span3'>
               <label class='feedback'>Твоето позитивно мнение:</label>
               <br>
               <textarea id="positiveFeedback" class ='input-lg' rows="2" cols="20" name="positive"></textarea>
             </div>
 
-            <div class="div_negative_feedback">
+            <div class="span3">
               <label class="feedback">Твоето негативно мнение:</label>
               <br>
               <textarea id="negativeFeedback" class="input-lg" rows="2" cols="20" name="negative"></textarea>
             </div>
+            <div id="recaptcha">
+            </div>
           </form>
-          <div id="recaptcha">
-          </div>
           <button id="submitButton" class="btn-success" type="submit" onclick="postFeedback()">Submit feedback</buton>
         </div>
-        <div id="about">
-        asdadasdasd
+        <div id="about" class="row">
+          <div class="span4">
+            <p>Липсващата система за обратна връзка.</p>
+          </div>
+          <div class="span8"> 
+            <h1 id="">Цел</h1>
+
+            <p>Целта е проста - да се чуе мнението на студентите, защото то е важно.
+            Целта е да се събира обратна връзка за преподаватели и предмети и редовно да се изпраща email до декана с нея.
+            Системата е инициирана по време на hackfmi от <a href="/humans.txt">humans.txt</a></p>
+          </div>
         </div>
         <div id="feedback">
-          d
-          d
-          d
-          dd
-          d
-
-          d
+          <div id="feedbackCount">
+              <h1><span>0</span> feedbacks till now</h1>
+          </div>
         </div>
       </div><!-- starter_template -->
     </div><!-- /.container -->

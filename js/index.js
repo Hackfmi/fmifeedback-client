@@ -4,15 +4,39 @@ $(document).ready(function() {
     url : APIendpoint + "feedback/?key=hackfmi",
     dataType: "json",
     success : function(data) {
-      // debugger;
-      $("#recaptcha").append(data.recaptcha);
+      debugger
+      Recaptcha.create(data.recaptcha_public_key,
+        "recaptcha",
+        {
+          theme: "red",
+          callback: Recaptcha.focus_response_field
+        }
+      );
+      // $.getScript(recaptchaURL.scriptURL + data.recaptcha_public_key, function(){
+      //   debugger;
+      // });
+      // // $("#recaptcha script").attr("src", recaptchaURL.scriptURL + data.recaptcha_public_key);
+      // // $("#recaptcha iframe").attr("src", recaptchaURL.iframeURL + data.recaptcha_public_key);
+      $("#feedbackCount span").html(data.count_all);
     },
     error : function(jqXHR, textStatus, errorThrown) {
       console.log(textStatus + ' ' + errorThrown);
     }
   });
 });
-
+var recaptchaURL = {
+  "scriptURL": "http://www.google.com/recaptcha/api/challenge?k=",
+  "iframeURL": "http://www.google.com/recaptcha/api/noscript?k="
+}
+var feedbackContainer = {
+  "teacher_name":   "",
+  "course_name":    "",
+  "positive":       "",
+  "negative":       "",
+  "date":           "",
+  "course_rating":  0,
+  "teacher_rating": 0
+};
 var APIendpoint = "http://146.185.165.209/server/";
 var onKeypress = function(e) {
 	var tmp_str = $("#courseInputField").val();
@@ -62,14 +86,33 @@ var getTeachersForCourse = function(label) {
 			}
 			$('#teacher').append(option);
 			$('#teacher').val(data[0].name);
-			// $("#gamifiedEducation").hide("fast");
-			// $("#thankYouMessage").show("fast");
 		},
 
 		error : function(jqXHR, textStatus, errorThrown) {
 			console.log(textStatus + ' ' + errorThrown);
 		}
 	});
+};
+
+var getFeedback = function(e) {
+  $.ajax({
+    type : "GET",
+    url : APIendpoint + "feedbacks/" + 1,
+    dataType: 'json',
+    success : function(data) {
+      debugger;
+      var option = '';
+      for (i=0;i<data.length;i++){
+         option += '<option value="'+ data[i].name + '">' + data[i].name + '</option>';
+      }
+      $('#teacher').append(option);
+      $('#teacher').val(data[0].name);
+    },
+
+    error : function(jqXHR, textStatus, errorThrown) {
+      console.log(textStatus + ' ' + errorThrown);
+    }
+  });
 };
 
 var postFeedback = function(e){
@@ -87,9 +130,6 @@ var postFeedback = function(e){
 			"negative":       $("#negativeFeedback").val(),
       "course_rating":  0,
       "teacher_rating": 0
-			// "gamified" : payload,
-			// "feedbackId" : feedbackId,
-			// "studentId" : studentId
 		},
     statusCode: {
       404: function() {
@@ -110,3 +150,4 @@ var postFeedback = function(e){
 		}
 	});
 }
+

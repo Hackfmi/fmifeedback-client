@@ -25,12 +25,8 @@
 }
 .starter-template {
   margin: 40px 15px;
-  text-align: center;
+  /*text-align: center;*/
 }
 .courseInputContainer {
 	width: 25%;
-}
-#recaptcha {
-  width: 200px;
-  height: 200px;
 }
