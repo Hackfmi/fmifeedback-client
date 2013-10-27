@@ -1,4 +1,6 @@
+var APIendpoint = "http://146.185.165.209/server/";
 var page = 1;
+
 $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
       $("#feedback").append($('div#loadmoreajaxloader'));
@@ -41,16 +43,12 @@ $(document).ready(function() {
     }
   });
 });
-// var recaptchaURL = {
-//   "scriptURL": "http://www.google.com/recaptcha/api/challenge?k=",
-//   "iframeURL": "http://www.google.com/recaptcha/api/noscript?k="
-// }
 var getFeedbackHTMLElement = function (data) {
   debugger;
   var html = '<div class="feedbackElement well well-large">' 
   +  '<div class="date label label-default pull-right">' + data.created + '</div>' 
-  +  '<h2 class="course-name">' + data.course_name + '</h2>' 
-  +  '<h2 class="teacher-name">' + data.teacher_name + '</h2>';
+  +  '<h2 data-id="' + data.course_id + '" class="course-name"><a href="course.html#' + data.course_id + '">' + data.course_name + '</a></h2>' 
+  +  '<h2 data-id="' + data.teacher_id + '" class="teacher-name"><a href="teacher.html#' + data.teacher_id + '">' + data.teacher_name + '</a></h2>';
   if (data.positive_text) {
     html += '<div class="positive-feedback alert-success pull-left">' + data.positive_text + '</div>';
   } 
@@ -61,10 +59,9 @@ var getFeedbackHTMLElement = function (data) {
   +  '<div class="date label label-default">' + data.teacher_rating + '</div></div>';
   return html;
 };
-var APIendpoint = "http://146.185.165.209/server/";
 var onKeypress = function(e) {
 	var tmp_str = $("#courseInputField").val();
-  if (tmp_str.length > 3) {
+  if (tmp_str.length > 2) {
 		$.ajax({
   		type : "GET",
   		url : APIendpoint + "startsWith/" + tmp_str,
@@ -95,7 +92,7 @@ var onKeypress = function(e) {
   		}
 		});
 	}
-}
+};
 var getTeachersForCourse = function(label) {
 	//GET Teachers
 	var courseID = label;
