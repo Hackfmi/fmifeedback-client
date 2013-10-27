@@ -44,7 +44,6 @@ $(document).ready(function() {
   });
 });
 var getFeedbackHTMLElement = function (data) {
-  debugger;
   var html = '<div class="feedbackElement well well-large">' 
   +  '<div class="date label label-default pull-right">' + data.created + '</div>' 
   +  '<h2 data-id="' + data.course_id + '" class="course-name"><a href="course.html#' + data.course_id + '">' + data.course_name + '</a></h2>' 

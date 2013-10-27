@@ -1,11 +1,7 @@
-@media all and (max-width: 1920px) {
-  body {
-    padding-top: 10%;
-  }
-}
+
 @media all and (max-width: 1366px) {
   body {
-    padding-top: 20%;
+    padding-top: 10%;
   }
 }
 @media all and (max-width: 1290px) {
