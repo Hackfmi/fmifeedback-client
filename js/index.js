@@ -136,12 +136,11 @@ var getFeedback = function(e) {
 };
 
 var postFeedback = function(e){
-  debugger;
 	$.ajax({
 		type : "POST",
 		url : APIendpoint +"feedback/?key=hackfmi",
 		data : {
-			"teacher_id":     $('#teacher option:selected').attr('data-id');,
+			"teacher_id":     $('#teacher option:selected').attr('data-id'),
       "course_id":      $("#courseId").val(),
 			"positive":       $("#positiveFeedback").val(),
 			"negative":       $("#negativeFeedback").val(),
