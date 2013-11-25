@@ -19,10 +19,16 @@
     padding-top: 50%;
   }
 }
-.starter-template {
-  margin: 40px 15px;
-  /*text-align: center;*/
+
+/* push body, because of fixed navbar and huge logo*/
+body {
+  padding: 150px;
 }
+.starter-template {
+  margin: 100px 15px;
+  text-align: center;
+}
+
 .courseInputContainer {
 	width: 25%;
 }
