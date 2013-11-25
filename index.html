@@ -58,32 +58,31 @@
       <div id="give" class="row">
         <div class="col-lg-12">
             <h2>Дай своят Feedback</h2>
-            <form>
-              <div id="courseInputContainer" class="col-md-4 col-md-offset-3">
-               <input id="courseInputField" oninput="onKeypress()" type="text" class="input-sm" id="coursebox" name="coursebox" placeholder="Въведи предмет на кирилица"/>
-               <input type="hidden" id="courseId" name="courseId" value="-1"/>
-             </div>
+            <form id="feedbackForm">
+              <div>
+                <input id="courseInputField" placeholder="Въведи предмет или изборна на кирилица :)" class="input-lg form-control" oninput="onKeypress()" />
+                <input type="hidden" id="courseId" name="courseId" value="-1"/>
+              </div>
+               <br />
+               <div>
+                <select id="teacher" class="input-lg form-control" name="teacherbox" id="teacherbox">
+                  <option data-id="-1" value="-1">Първо въведи предмет</option>
+                </select>
+              </div>
+              <div>
+                <label class='feedback'>Твоето позитивно мнение:</label>
+                <br>
+                <textarea id="positiveFeedback" class ="form-control" rows="3" name="positive"></textarea>
+              </div>
 
-             <div>
-              <select id="teacher" class="input-sm" name="teacherbox" id="teacherbox">
-                <option data-id="-1" value="-1">Първо въведи предмет</option>
-              </select>
-            </div>
-
-            <div class = 'col-md-4 col-md-offset-3'>
-              <label class='feedback'>Твоето позитивно мнение:</label>
-              <br>
-              <textarea id="positiveFeedback" class ='input-lg' rows="2" cols="20" name="positive"></textarea>
-            </div>
-
-            <div class="col-md-4 col-md-offset-3">
-              <label class="feedback">Твоето негативно мнение:</label>
-              <br>
-              <textarea id="negativeFeedback" class="input-lg" rows="2" cols="20" name="negative"></textarea>
-            </div>
-            <div id="recaptcha" class="col-md-4 col-md-offset-3">
-            </div>
-            <button id="submitButton" class="btn btn-primary btn-large col-md-4 col-md-offset-3" type="submit" onclick="postFeedback()">Submit feedback</button>
+              <div>
+                <label class="feedback">Твоето негативно мнение:</label>
+                <br>
+                <textarea id="negativeFeedback" class="form-control" rows="3"></textarea>
+              </div>
+              <div class="pagination-centered" id="recaptcha">
+              </div>
+              <button id="submitButton" class="btn btn-primary btn-large col-md-4 col-md-offset-3" type="submit">Submit feedback</button>
           </form>
         </div>
       </div>

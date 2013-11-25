@@ -26,6 +26,11 @@ $(window).scroll(function() {
     }
 });
 $(document).ready(function() {
+  $("#feedbackForm").on("submit", function(event) {
+    event.preventDefault();
+    postFeedback();
+  });
+  
   $.ajax({
     type: "GET",
     url : APIendpoint + "feedback/?key=" + RECAPTCHA_SERVER_KEY,
@@ -34,7 +39,7 @@ $(document).ready(function() {
       Recaptcha.create(data.recaptcha_public_key,
         "recaptcha",
         {
-          theme: "red",
+          theme: "clean",
           callback: Recaptcha.focus_response_field
         }
       );
