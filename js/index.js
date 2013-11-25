@@ -1,5 +1,7 @@
-var APIendpoint = "http://146.185.165.209/server/";
-var page = 1;
+var
+  APIendpoint = "http://146.185.169.9/server/",
+  page = 1,
+  RECAPTCHA_SERVER_KEY = "radorado";
 
 $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -26,7 +28,7 @@ $(window).scroll(function() {
 $(document).ready(function() {
   $.ajax({
     type: "GET",
-    url : APIendpoint + "feedback/?key=hackfmi",
+    url : APIendpoint + "feedback/?key=" + RECAPTCHA_SERVER_KEY,
     dataType: "json",
     success : function(data) {
       Recaptcha.create(data.recaptcha_public_key,
@@ -43,6 +45,7 @@ $(document).ready(function() {
     }
   });
 });
+
 var getFeedbackHTMLElement = function (data) {
   var html = '<div class="feedbackElement well well-large">' 
   +  '<div class="date label label-default pull-right">' + data.created + '</div>' 

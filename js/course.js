@@ -1,6 +1,7 @@
 var id = window.location.href.split("#")[1] || -1;
 var pageCourse = 1;
 var APIendpoint = "http://146.185.165.209/server/";
+
 $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
       $("#feedback").append($('div#loadmoreajaxloader'));
@@ -18,6 +19,7 @@ $(window).scroll(function() {
       });
     }
 });
+
 $(document).ready(function() {
   $.ajax({
     type: "GET",
