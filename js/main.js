@@ -5,9 +5,13 @@ jQuery(document).ready(function($) {
 
 
 	var
-		coursesData = new Courses(),
+		selectedCourse = new Course(),
 		ci = new CoursesInput({
 			el : "#feedbackForm",
-			collection : coursesData
+			model : selectedCourse
 		});
+
+	selectedCourse.bind("change", function(model, data) {
+		console.log(model, data);
+	})
 });
