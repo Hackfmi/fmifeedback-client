@@ -14,7 +14,7 @@
 		},
 		submitFeedback : function(event) {
 			event.preventDefault();
-			this.eventBus.trigger("feedback:submit", { key : "value"});
+			this.eventBus.trigger("feedback:submit");
 		}
 	});
 }) (window, $, _);

@@ -48,4 +48,14 @@ jQuery(document).ready(function($) {
 			break;
 		}
 	});
+
+	eventBus.on("feedback:submit", function(eventPayload) {
+		console.log("Submitting feedback");
+		feedbackModel.set("recaptcha_response_field", Recaptcha.get_response());
+		feedbackModel.set("recaptcha_challenge_field", Recaptcha.get_challenge());
+
+		feedbackModel.save({
+			apiKey : window.AppConfig.SERVER_API_KEY
+		});
+	});
 });
