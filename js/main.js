@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
 	var
 		selectedCourse = new Course(),
-		ci = new CoursesInput({
+		ci = new CourseInput({
 			el : "#feedbackForm",
 			model : selectedCourse
 		}),

@@ -1,5 +1,5 @@
 (function(window, $, _, undefined) {
-	CoursesInput = Backbone.View.extend({
+	CourseInput = Backbone.View.extend({
 		template : "#coursesInputTemplate",
 		initialize : function() {
 			this.typeAhead = null;
