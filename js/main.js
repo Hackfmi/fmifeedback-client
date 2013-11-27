@@ -43,6 +43,9 @@ jQuery(document).ready(function($) {
 			case "CourseInput" :
 				feedbackModel.set("course_id", eventPayload.data.uid);
 			break;
+			case "TeacherInput" :
+				feedbackModel.set("teacher_id", eventPayload.data.uid);
+			break;
 		}
 	});
 });

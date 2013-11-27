@@ -41,7 +41,13 @@
 			console.log(selectedModel)
 		},
 		updateTeacherModel : function(model) {
-			console.log("Teacher selected");
+			this.trigger("set:keyvalue", {
+				from : this.classToString(),
+				data : model
+			});
+		},
+		classToString : function() {
+			return "TeacherInput";
 		}
 	});
 }) (window, $, _);
