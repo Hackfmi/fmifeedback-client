@@ -29,9 +29,20 @@ jQuery(document).ready(function($) {
 		submitButton = new SubmitFormButton({
 			el : $("<div></div>").appendTo("#feedbackForm"),
 			eventBus : eventBus
-		});
+		}),
+		feedbackModel = new Feedback();
 
 	// holds recaptcha public key
 	// and feedback count
 	appDataModel.fetch();
+
+	// the dependency is here
+	eventBus.on("set:keyvalue", function(eventPayload) {
+		console.log(eventPayload);
+		switch(eventPayload.from) {
+			case "CourseInput" :
+				feedbackModel.set("course_id", eventPayload.data.uid);
+			break;
+		}
+	});
 });
