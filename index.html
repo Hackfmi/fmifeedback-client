@@ -110,6 +110,7 @@
     <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="bower_components/backbone/backbone-min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/typeahead.js/dist/typeahead.min.js"></script>
     
     <!-- APP CONFIG -SET SOME DEFAULT VARIABLES -->
     <script type="text/javascript" src="js/appconfig.js"></script>
@@ -121,7 +122,20 @@
     <script type="text/javascript" src="js/data/models/course.js"></script>
     <script type="text/javascript" src="js/data/collections/courses.js"></script>
 
+    <!-- VIEWS -->
+    <script type="text/javascript" src="js/views/coursesinput.js"></script>
+
     <!-- APP ENTRY POINT -->
     <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- TEMPLATES - TO BE MOVED TO A SEPARATE FILE -->
+    <script type="text/template" id="coursesInputTemplate">
+        <input type="text" placeholder="Въведи предмет или изборна на кирилица :)" class="autocomplete" />
+        <input type="hidden" id="courseId" name="courseId" value="-1"/>
+    </script>
+
+    <script type="text/template" id="courseTypeaheadTemplate">
+        <p class="course-suggestion-box">Търсеният предмет е : <%= name %></p>
+      </script>
   </body>
 </html>
