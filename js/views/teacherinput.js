@@ -13,9 +13,16 @@
 					reset : true
 				});
 			});
-			this.collection.bind("reset", this.render, this);
+			this.collection.bind("reset", this.collectionReset, this);
 
 			// show the default state
+			this.render();
+		},
+		events : {
+			"change select" : "selectedTeacherHandler"
+		},
+		collectionReset : function() {
+			this.updateTeacherModel(_.first(this.collection.models));
 			this.render();
 		},
 		render : function() {
@@ -24,6 +31,17 @@
 				model : this.model
 			});
 			this.$el.html( compiledHtml );
+		},
+		selectedTeacherHandler : function(event) {
+			var
+				selectedId = this.$(event.target).find("option:selected").val(),
+				selectedModel = _.find(this.collection.models, function(m) {
+					return parseInt(m.get("uid"), 10) === parseInt(selectedId, 10);
+				});
+			console.log(selectedModel)
+		},
+		updateTeacherModel : function(model) {
+			console.log("Teacher selected");
 		}
 	});
 }) (window, $, _);
