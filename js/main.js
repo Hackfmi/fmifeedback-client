@@ -20,7 +20,12 @@ jQuery(document).ready(function($) {
 		recaptha = new RecaptchaInput({
 			el : $("<div></div>").appendTo("#feedbackForm"),
 			model : appDataModel
+		}),
+		submitButton = new SubmitFormButton({
+			el : $("<div></div>").appendTo("#feedbackForm")
 		});
 
+	// holds recaptcha public key
+	// and feedback count
 	appDataModel.fetch();
 });
