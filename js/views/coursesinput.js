@@ -1,15 +1,14 @@
 (function(window, $, _, undefined) {
 	CoursesInput = Backbone.View.extend({
+		template : "#coursesInputTemplate",
 		initialize : function() {
 			this.typeAhead = null;
 			this.render();
 		},
-		events : {
-		},
 		render : function() {
 
-			var template = _.template( $("#coursesInputTemplate").html(), {} );
-			this.$el.html( template );
+			var compiledHtml = _.template( $(this.template).html(), {} );
+			this.$el.html( compiledHtml );
 
 			this.typeAhead = 
 			this.$el.find("input[type=text]").typeahead({

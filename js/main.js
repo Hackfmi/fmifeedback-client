@@ -9,9 +9,11 @@ jQuery(document).ready(function($) {
 		ci = new CoursesInput({
 			el : "#feedbackForm",
 			model : selectedCourse
+		}),
+		ti = new TeacherInput({
+			el : $("<div></div>").appendTo("#feedbackForm"),
+			model : selectedCourse
 		});
 
-	selectedCourse.bind("change", function(model, data) {
-		console.log(model, data);
-	})
+		ti.render();
 });
