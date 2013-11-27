@@ -1,12 +1,12 @@
 (function(window, $, _, undefined) {
-	CourseInput = Backbone.View.extend({
+	CourseInput = BaseView.extend({
 		template : "#coursesInputTemplate",
-		initialize : function() {
+		initialize : function(options) {
+			BaseView.prototype.initialize.call(this, options);
 			this.typeAhead = null;
 			this.render();
 		},
 		render : function() {
-
 			var compiledHtml = _.template( $(this.template).html(), {} );
 			this.$el.html( compiledHtml );
 

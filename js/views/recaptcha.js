@@ -1,7 +1,8 @@
 (function(window, $, _, Recaptcha, undefined) {
-	RecaptchaInput = Backbone.View.extend({
+	RecaptchaInput = BaseView.extend({
 		template : "#recaptchaContainer",
-		initialize : function() {
+		initialize : function(options) {
+			BaseView.prototype.initialize.call(this, options);
 			this.model.bind("change", this.render, this);
 		},
 		render : function() {

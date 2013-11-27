@@ -1,7 +1,8 @@
 (function(window, $, _, undefined) {
-	SubmitFormButton = Backbone.View.extend({
+	SubmitFormButton = BaseView.extend({
 		template : "#submitButtonTemplate",
-		initialize : function() {
+		initialize : function(options) {
+			BaseView.prototype.initialize.call(this, options);
 			this.render();
 		},
 		events : {

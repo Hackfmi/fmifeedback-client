@@ -1,7 +1,8 @@
 (function(window, $, _, undefined) {
-	FeedbackInput = Backbone.View.extend({
+	FeedbackInput = BaseView.extend({
 		template : "#feedbackInputTemplate",
-		initialize : function() {
+		initialize : function(options) {
+			BaseView.prototype.initialize.call(this, options);
 			this.render();
 		},
 		render : function() {

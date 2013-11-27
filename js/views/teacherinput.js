@@ -1,7 +1,8 @@
 (function(window, $, _, undefined) {
-	TeacherInput = Backbone.View.extend({
+	TeacherInput = BaseView.extend({
 		template : "#selectTeacherTemplate",
-		initialize : function() {
+		initialize : function(options) {
+			BaseView.prototype.initialize.call(this, options);
 			var that = this;
 
 			// We wait for a course to be picked up
