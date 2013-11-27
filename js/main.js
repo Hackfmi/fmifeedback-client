@@ -3,6 +3,7 @@ jQuery(document).ready(function($) {
 	Backbone.history.start();
 
 	var
+		appDataModel = new AppData(),
 		selectedCourse = new Course(),
 		ci = new CourseInput({
 			el : "#feedbackForm",
@@ -15,5 +16,11 @@ jQuery(document).ready(function($) {
 		}),
 		fi = new FeedbackInput({
 			el : $("<div></div>").appendTo("#feedbackForm")
+		}),
+		recaptha = new RecaptchaInput({
+			el : $("<div></div>").appendTo("#feedbackForm"),
+			model : appDataModel
 		});
+
+	appDataModel.fetch();
 });

@@ -117,7 +117,7 @@
     <script type="text/javascript" src="js/views/courseinput.js"></script>
     <script type="text/javascript" src="js/views/teacherinput.js"></script>
     <script type="text/javascript" src="js/views/feedbackinput.js"></script>
-    
+    <script type="text/javascript" src="js/views/recaptcha.js"></script>
     <!-- APP ENTRY POINT -->
     <script type="text/javascript" src="js/main.js"></script>
 
@@ -131,9 +131,7 @@
       <select class="input-lg form-control">
         <% if (model.get("uid") === -1) { %>
             <option data-id="-1" value="-1">Първо въведи предмет</option>
-        <% } %>
-
-        <% if (collection.length === 0) { %>
+        <% } else if (collection.length === 0) {%>
             <option data-id="-1" value="-1">Няма намерени учители :(</option>
         <% } %>
         
@@ -155,6 +153,11 @@
           <br>
           <textarea id="negativeFeedback" class="form-control" rows="3"></textarea>
         </div>
+    </script>
+
+    <script type="text/template" id="recaptchaContainer">
+      <div class="pagination-centered" id="recaptcha">
+      </div>
     </script>
 
     <script type="text/template" id="courseTypeaheadTemplate">
