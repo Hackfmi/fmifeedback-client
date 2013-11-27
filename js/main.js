@@ -1,3 +1,5 @@
 jQuery(document).ready(function($) {
-	console.log("About to start the show!");	
+	var router = new AppRouter();
+	Backbone.history.start();
+	
 });

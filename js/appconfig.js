@@ -20,6 +20,3 @@ var AppRouter = Backbone.Router.extend({
 		console.log("#about");
 	}
 });
-
-var router = new AppRouter();
-Backbone.history.start();
