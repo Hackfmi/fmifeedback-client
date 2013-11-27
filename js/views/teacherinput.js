@@ -13,6 +13,9 @@
 				});
 			});
 			this.collection.bind("reset", this.render, this);
+
+			// show the default state
+			this.render();
 		},
 		render : function() {
 			var compiledHtml = _.template( $(this.template).html(), {
