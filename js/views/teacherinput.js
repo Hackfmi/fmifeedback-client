@@ -38,13 +38,14 @@
 				selectedModel = _.find(this.collection.models, function(m) {
 					return parseInt(m.get("uid"), 10) === parseInt(selectedId, 10);
 				});
-			console.log(selectedModel)
+
+			this.updateTeacherModel(selectedModel);
 		},
 		updateTeacherModel : function(model) {
-			this.trigger("set:keyvalue", {
-				from : this.classToString(),
-				data : model
-			});
+			this.eventBus.trigger("set:keyvalue",[{
+				key : "teacher_id",
+				value : model.get("uid")
+			}]);
 		},
 		classToString : function() {
 			return "TeacherInput";

@@ -33,20 +33,16 @@
             });
 
 			var that = this;
-
 			this.typeAhead.on("typeahead:selected", function(evt, data) {
 				that.updateCourseModel(data);
-				that.trigger("set:keyvalue", {
-					from : that.classToString(),
-					data : data
-				});
 			});
 		},
 		updateCourseModel : function(modelData) {
 			this.model.set(modelData);
-		},
-		classToString : function() {
-			return "CourseInput";
+			this.eventBus.trigger("set:keyvalue", [{
+				key : "course_id",
+				value : this.model.get("uid")	
+			}]);
 		}
 	});
 

@@ -14,7 +14,7 @@
 
 			Recaptcha.create(this.model.get("recaptchaPublicKey"), recaptchaContainerId, {
 				theme: "clean",
-				callback: Recaptcha.focus_response_field
+				// callback: Recaptcha.focus_response_field
 			});
 		}
 	});

@@ -38,15 +38,11 @@ jQuery(document).ready(function($) {
 
 	// the dependency is here
 	eventBus.on("set:keyvalue", function(eventPayload) {
-		console.log(eventPayload);
-		switch(eventPayload.from) {
-			case "CourseInput" :
-				feedbackModel.set("course_id", eventPayload.data.uid);
-			break;
-			case "TeacherInput" :
-				feedbackModel.set("teacher_id", eventPayload.data.uid);
-			break;
-		}
+		_.each(eventPayload, function(keyValueItem) {
+			feedbackModel.set(keyValueItem.key, keyValueItem.value);
+		});
+
+		console.log(feedbackModel.toJSON());
 	});
 
 	eventBus.on("feedback:submit", function(eventPayload) {
