@@ -121,6 +121,8 @@
     <script type="text/javascript" src="js/data/models/appdata.js"></script>
     <script type="text/javascript" src="js/data/models/course.js"></script>
     <script type="text/javascript" src="js/data/collections/courses.js"></script>
+    <script type="text/javascript" src="js/data/models/teacher.js"></script>
+    <script type="text/javascript" src="js/data/collections/teachers.js"></script>
 
     <!-- VIEWS -->
     <script type="text/javascript" src="js/views/courseinput.js"></script>
@@ -136,8 +138,18 @@
     </script>
 
     <script type="text/template" id="selectTeacherTemplate">
-      <select id="teacher" class="input-lg form-control" name="teacherbox" id="teacherbox">
-        <option data-id="-1" value="-1">Първо въведи предмет</option>
+      <select class="input-lg form-control">
+        <% if (model.get("uid") === -1) { %>
+            <option data-id="-1" value="-1">Първо въведи предмет</option>
+        <% } %>
+
+        <% if (collection.length === 0) { %>
+            <option data-id="-1" value="-1">Няма намерени учители :(</option>
+        <% } %>
+        
+        <% _.each(collection, function(item) { %>
+            <option value="<%= item.uid %>"><%= item.name %></option>
+        <% }); %>
       </select>
     </script>
 

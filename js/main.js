@@ -12,7 +12,8 @@ jQuery(document).ready(function($) {
 		}),
 		ti = new TeacherInput({
 			el : $("<div></div>").appendTo("#feedbackForm"),
-			model : selectedCourse
+			model : selectedCourse,
+			collection : new FilteredTeachers()
 		});
 
 		ti.render();
