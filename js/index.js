@@ -1,7 +1,7 @@
 var
   APIendpoint = "http://146.185.169.9/server/",
   page = 1,
-  RECAPTCHA_SERVER_KEY = "radorado";
+  SERVER_API_KEY = "radorado";
 
 $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -30,10 +30,10 @@ $(document).ready(function() {
     event.preventDefault();
     postFeedback();
   });
-  
+
   $.ajax({
     type: "GET",
-    url : APIendpoint + "feedback/?key=" + RECAPTCHA_SERVER_KEY,
+    url : APIendpoint + "feedback/?key=" + SERVER_API_KEY,
     dataType: "json",
     success : function(data) {
       Recaptcha.create(data.recaptcha_public_key,
@@ -145,7 +145,7 @@ var getFeedback = function(e) {
 var postFeedback = function(e){
 	$.ajax({
 		type : "POST",
-		url : APIendpoint +"feedback/?key=hackfmi",
+		url : APIendpoint +"feedback/?key=" + SERVER_API_KEY,
 		data : {
 			"teacher_id":     $('#teacher option:selected').attr('data-id'),
       "course_id":      $("#courseId").val(),
