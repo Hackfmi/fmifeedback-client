@@ -12,22 +12,22 @@ jQuery(document).ready(function($) {
 			eventBus : eventBus
 		}),
 		ti = new TeacherInput({
-			el : $("<div></div>").appendTo("#feedbackForm"),
+			el : "#teacherInputPlaceholder",
 			model : selectedCourse,
 			collection : new FilteredTeachers(),
 			eventBus : eventBus
 		}),
 		fi = new FeedbackInput({
-			el : $("<div></div>").appendTo("#feedbackForm"),
+			el : "#textFeedbackPlaceholder",
 			eventBus : eventBus
 		}),
 		recaptha = new RecaptchaInput({
-			el : $("<div></div>").appendTo("#feedbackForm"),
+			el : "#recaptchaInputPlaceholder",
 			model : appDataModel,
 			eventBus : eventBus
 		}),
 		submitButton = new SubmitFormButton({
-			el : $("<div></div>").appendTo("#feedbackForm"),
+			el : "#submitButtonPlaceholder",
 			eventBus : eventBus
 		}),
 		feedbackModel = new Feedback();

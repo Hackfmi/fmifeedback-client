@@ -60,28 +60,25 @@
             <h2>Дай своят Feedback</h2>
               <form id="feedbackForm">
                 <div id="courseInputPlaceholder">
+                </div>
 
-                </div>   
+                <div id="teacherInputPlaceholder">
+                </div>
+
+                <div id="textFeedbackPlaceholder">
+                </div>
+
+                <div id="recaptchaInputPlaceholder">
+                </div>
+
+                <div id="submitButtonPlaceholder">
+                </div>
               </form>
         </div>
       </div>
 
         <div id="feedbackView" class="row">
-        <script type="text/template" id="feedbackViewTemplate">
-          <div class="col-lg-12">
-            <h2>
-              <a href="#/seefeedback">
-                <span><%= feedbackCount %></span> feedbacks till now
-              </a>
-              </h2>
-
-            <div id="feedbackInfiniteScroll">
-
-            </div>
-            <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
-          </div>
-        </script>
-      </div>
+        </div>
     </div>
 
     <!-- BOWER INCLUDES -->
@@ -116,10 +113,6 @@
     <script type="text/javascript" src="js/main.js"></script>
 
     <!-- TEMPLATES - TO BE MOVED TO A SEPARATE FILE -->
-    <script type="text/template" id="coursesInputTemplate">
-        <input type="text" placeholder="Въведи предмет или изборна на кирилица :)" class="autocomplete" />
-        <button class="btn pickAnotherCourse invisible">Избери друг предмет</button>
-    </script>
 
     <script type="text/template" id="selectTeacherTemplate">
       <select class="input-lg form-control">
@@ -149,17 +142,36 @@
         </div>
     </script>
 
-    <script type="text/template" id="recaptchaContainer">
-      <div class="pagination-centered" id="recaptcha">
-      </div>
+    <script type="text/template" id="courseTypeaheadTemplate">
+        <p class="course-suggestion-box"><%= name %></p>
     </script>
 
     <script type="text/template" id="submitButtonTemplate">
       <button id="submitButton" class="btn btn-primary btn-large" type="submit">Засили feedback-a към сървъра!</button> 
     </script>
 
-    <script type="text/template" id="courseTypeaheadTemplate">
-        <p class="course-suggestion-box"><%= name %></p>
+    <script type="text/template" id="recaptchaContainer">
+      <div class="pagination-centered" id="recaptcha">
+      </div>
+    </script>
+
+    <script type="text/template" id="coursesInputTemplate">
+        <input type="text" placeholder="Въведи предмет или изборна на кирилица :)" class="autocomplete" />
+        <button class="btn pickAnotherCourse invisible">Избери друг предмет</button>
+    </script>
+
+    <script type="text/template" id="feedbackViewTemplate">
+      <div class="col-lg-12">
+        <h2>
+          <a href="#/seefeedback">
+            <span><%= feedbackCount %></span> feedbacks till now
+          </a>
+          </h2>
+
+        <div id="feedbackInfiniteScroll">
+        </div>
+        <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
+      </div>
     </script>
   </body>
 </html>
