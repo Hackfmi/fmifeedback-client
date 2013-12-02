@@ -30,6 +30,11 @@ jQuery(document).ready(function($) {
 			el : "#submitButtonPlaceholder",
 			eventBus : eventBus
 		}),
+		feedbackScoller = new FeedbackScoller({
+			el : "#feedbackView",
+			eventBus : eventBus,
+			model : appDataModel
+		}),
 		feedbackModel = new Feedback();
 
 	// holds recaptcha public key

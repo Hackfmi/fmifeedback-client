@@ -77,6 +77,7 @@
         </div>
       </div>
 
+      <hr />
         <div id="feedbackView" class="row">
         </div>
     </div>
@@ -110,6 +111,7 @@
     <script type="text/javascript" src="js/views/feedbackinput.js"></script>
     <script type="text/javascript" src="js/views/recaptcha.js"></script>
     <script type="text/javascript" src="js/views/submitformbutton.js"></script>
+    <script type="text/javascript" src="js/views/feedbackscroller.js"></script>
     <!-- APP ENTRY POINT -->
     <script type="text/javascript" src="js/main.js"></script>
 
@@ -164,7 +166,7 @@
     <script type="text/template" id="feedbackViewTemplate">
       <div class="col-lg-12">
         <h2>
-          <a href="#/seefeedback">
+          <a class="button" href="#/seefeedback">
             <span><%= feedbackCount %></span> feedbacks till now
           </a>
           </h2>
@@ -173,6 +175,20 @@
         </div>
         <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
       </div>
+    </script>
+
+    <script id="feedbackInfiniteScrollTemplate" type="text/template">
+    <% _.each(collection, function(model) { %>
+      <div class="feedbackElement well well-large">
+        <div class="date label label-default pull-right"><%= model.created %></div> 
+        <h2 class="course-name">
+          <a><%= model.course_name %></a>
+        </h2> 
+        <h2 class="teacher-name">
+          <a><%= model.teacher_name %></a>
+        </h2>
+      </div>
+    <% }); %>
     </script>
   </body>
 </html>
