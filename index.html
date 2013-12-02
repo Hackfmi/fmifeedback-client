@@ -178,17 +178,21 @@
     </script>
 
     <script id="feedbackInfiniteScrollTemplate" type="text/template">
-    <% _.each(collection, function(model) { %>
-      <div class="feedbackElement well well-large">
-        <div class="date label label-default pull-right"><%= model.created %></div> 
-        <h2 class="course-name">
-          <a><%= model.course_name %></a>
-        </h2> 
-        <h2 class="teacher-name">
-          <a><%= model.teacher_name %></a>
-        </h2>
-      </div>
-    <% }); %>
+      <% if (collection.length === 0) { %>
+      <h2>Стигна до края ! :)</h2>
+      <% } else {%> 
+        <% _.each(collection, function(model) { %>
+          <div class="feedbackElement well well-large">
+            <div class="date label label-default pull-right"><%= model.created %></div> 
+            <h2 class="course-name">
+              <a><%= model.course_name %></a>
+            </h2> 
+            <h2 class="teacher-name">
+              <a><%= model.teacher_name %></a>
+            </h2>
+          </div>
+        <% }); %>
+      <% } %>
     </script>
   </body>
 </html>

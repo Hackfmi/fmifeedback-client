@@ -5,7 +5,7 @@
 			BaseView.prototype.initialize.call(this, options);
 
 			this.shouldInfiniteScroll = false;
-			this.isLoading = false;
+			this.isLoading = true;
 			this.$ajaxLoaderIndicator = null;
 			this.collection = new Feedbacks();$(window).scroll
 
