@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 		appDataModel = new AppData(),
 		selectedCourse = new Course(),
 		ci = new CourseInput({
-			el : "#feedbackForm",
+			el : "#courseInputPlaceholder",
 			model : selectedCourse,
 			eventBus : eventBus
 		}),

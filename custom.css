@@ -33,17 +33,23 @@ body {
 	width: 25%;
 }
 
- .autocomplete, .tt-query, .tt-hint {
+.autocomplete, .tt-query, .tt-hint {
    width: 500px;
+   height: 45px;
+   line-height: 45px;
    padding: 6px 12px;
    font-size: 14px;
-   height: 34px;
    border: 1px solid #ccc;
    border-radius: 4px;
    color: #555;
    vertical-align: middle;
    background-color: #fff;
    border: 1px solid #ccc;
+}
+
+.pickAnotherCourse {
+  /*put it in the middle of the input*/
+  margin-top: 20px;
 }
 
 .course-suggestion-box {

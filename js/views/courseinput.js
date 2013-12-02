@@ -3,8 +3,14 @@
 		template : "#coursesInputTemplate",
 		initialize : function(options) {
 			BaseView.prototype.initialize.call(this, options);
+
+			this.model.bind("change:uid", this.renderDisabled, this);
+
 			this.typeAhead = null;
 			this.render();
+		},
+		events : {
+			"click button" : "triggerPickCourse"
 		},
 		render : function() {
 			var compiledHtml = _.template( $(this.template).html(), {} );
@@ -34,8 +40,28 @@
 
 			var that = this;
 			this.typeAhead.on("typeahead:selected", function(evt, data) {
+				console.log(data);
 				that.updateCourseModel(data);
 			});
+		},
+		renderDisabled : function() {
+			// dont worry, should change
+			var
+				$input = this.$el.find("input[type=text]");
+
+			this.$el.find("button.pickAnotherCourse").toggleClass("invisible");
+
+			if(this.model.get("uid") === -1) {
+				$input
+					.removeAttr('disabled')
+					.css("background-color", "#fff")
+				this.typeAhead.typeahead("setQuery", "");
+				return;
+			}
+
+			$input
+				.attr("disabled", "disabled")
+				.css("background-color", "#eee") // trigger disabled color
 		},
 		updateCourseModel : function(modelData) {
 			this.model.set(modelData);
@@ -43,6 +69,10 @@
 				key : "course_id",
 				value : this.model.get("uid")	
 			}]);
+		},
+		triggerPickCourse : function(event) {
+			event.preventDefault();
+			this.updateCourseModel({ uid : -1});
 		}
 	});
 

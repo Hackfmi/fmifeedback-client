@@ -58,25 +58,29 @@
       <div id="give" class="row">
         <div class="col-lg-12">
             <h2>Дай своят Feedback</h2>
-              <form id="feedbackForm">         
+              <form id="feedbackForm">
+                <div id="courseInputPlaceholder">
+
+                </div>   
               </form>
         </div>
       </div>
 
-        <div id="about" class="row">
+        <div id="feedbackView" class="row">
+        <script type="text/template" id="feedbackViewTemplate">
           <div class="col-lg-12">
-            <p>Липсващата система за обратна връзка.</p>
-            <div id="feedback">
-              <div id="feedbackCount">
-                <h2>
-                  <a href="#feedback">
-                    <span>0</span> feedbacks till now
-                  </a>
-                  </h2>
-              </div>
-              <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
+            <h2>
+              <a href="#/seefeedback">
+                <span><%= feedbackCount %></span> feedbacks till now
+              </a>
+              </h2>
+
+            <div id="feedbackInfiniteScroll">
+
             </div>
+            <div id="loadmoreajaxloader" style="display:none;"><center><img src="public/images/ajax-loader.gif" /></center></div>
           </div>
+        </script>
       </div>
     </div>
 
@@ -114,7 +118,7 @@
     <!-- TEMPLATES - TO BE MOVED TO A SEPARATE FILE -->
     <script type="text/template" id="coursesInputTemplate">
         <input type="text" placeholder="Въведи предмет или изборна на кирилица :)" class="autocomplete" />
-        <input type="hidden" id="courseId" name="course_id" value="-1"/>
+        <button class="btn pickAnotherCourse invisible">Избери друг предмет</button>
     </script>
 
     <script type="text/template" id="selectTeacherTemplate">

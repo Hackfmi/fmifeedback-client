@@ -7,12 +7,18 @@
 
 			// We wait for a course to be picked up
 			// and after this, we fetch the coresponding teachers
-			this.model.bind("change", function(model) {
+			this.model.bind("change:uid", function(model) {
+				if(!model.valid()) {
+					that.collection.reset();
+					return;
+				}
+
 				that.collection.setCourse(model);
 				that.collection.fetch({
 					reset : true
 				});
 			});
+
 			this.collection.bind("reset", this.collectionReset, this);
 
 			// show the default state
@@ -42,9 +48,11 @@
 			this.updateTeacherModel(selectedModel);
 		},
 		updateTeacherModel : function(model) {
+			var teacherIdValue = _.isUndefined(model) ? -1 : model.get("uid");
+			
 			this.eventBus.trigger("set:keyvalue",[{
 				key : "teacher_id",
-				value : model.get("uid")
+				value : teacherIdValue
 			}]);
 		},
 		classToString : function() {
