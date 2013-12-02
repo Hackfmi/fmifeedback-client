@@ -40,7 +40,6 @@
 
 			var that = this;
 			this.typeAhead.on("typeahead:selected", function(evt, data) {
-				console.log(data);
 				that.updateCourseModel(data);
 			});
 		},
