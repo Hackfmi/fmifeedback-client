@@ -3,6 +3,10 @@
 		template : "#feedbackViewTemplate",
 		initialize : function(options) {
 			BaseView.prototype.initialize.call(this, options);
+
+			this.shouldInfiniteScroll = false;
+			this.isLoading = false;
+			this.$ajaxLoaderIndicator = null;
 			this.collection = new Feedbacks();$(window).scroll
 
 			this.model.bind("change", this.render, this);
@@ -19,9 +23,14 @@
 			} );
 			this.$el.html( compiledHtml );
 
+			this.$ajaxLoaderIndicator = this.$el.find("div#loadmoreajaxloader");
+
 			return this;
 		},
 		renderFeedback : function() {
+			this.$ajaxLoaderIndicator.hide();
+			this.isLoading = false;
+
 			var compiledHtml = _.template( $("#feedbackInfiniteScrollTemplate").html(), {
 				collection : this.collection.toJSON()
 			});
@@ -29,16 +38,29 @@
 			this.$el.find("#feedbackInfiniteScroll").append(compiledHtml);
 		},
 		loadFeedback : function(event) {
+			this.shouldInfiniteScroll = true;
+
 			this.collection.fetch({
 				reset : true
 			});
 		},
 		checkScroll: function () {
+			if(!this.shouldInfiniteScroll) {
+				return false;
+			}
+
 			var
 				triggerPoint = 100,
 				that = this;
-			if($(window).scrollTop() + triggerPoint >= $(document).height() - $(window).height()) {
-				that.$el.find("div#loadmoreajaxloader").show();
+			if(
+				!this.isLoading && 
+				(
+					$(window).scrollTop() + triggerPoint 
+					>= 
+					$(document).height() - $(window).height()
+				)) {
+				that.$ajaxLoaderIndicator.show();
+				that.isLoading = true;
 				_.delay( function() { that.loadFeedback(null) }, 2000);
 			}
 		}
